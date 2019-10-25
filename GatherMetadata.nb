@@ -23,7 +23,7 @@ mathematica.stackexchange.com.mx"},
 mathematica.stackexchange.com.mx"],
   SelectWithContents->
    True]], "Input",ExpressionUUID->"d25a2030-26d9-4330-8d66-26d4b73ac1b1"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -44,23 +44,23 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"EntityUnregister", "/@", 
    RowBox[{"store", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{"EntityRegister", "[", "store", 
-  "]"}]}], "Input",ExpressionUUID->"350019a6-7c9a-4434-ad54-9e2eaa2b05a7"],
+ RowBox[{"EntityRegister", "[", "store", "]"}]}], "Input",
+ CellLabel->"In[1]:=",ExpressionUUID->"350019a6-7c9a-4434-ad54-9e2eaa2b05a7"],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"\<\"StackExchange.Codegolf:User\"\>", 
-   ",", "\<\"StackExchange.Codegolf:Badge\"\>", 
-   ",", "\<\"StackExchange.Codegolf:Comment\"\>", 
-   ",", "\<\"StackExchange.Codegolf:Post\"\>", 
+  RowBox[{"\<\"StackExchange.Mathematica:User\"\>", 
+   ",", "\<\"StackExchange.Mathematica:Badge\"\>", 
+   ",", "\<\"StackExchange.Mathematica:Comment\"\>", 
+   ",", "\<\"StackExchange.Mathematica:Post\"\>", 
    ",", "\<\"StackExchange:PostType\"\>", 
-   ",", "\<\"StackExchange.Codegolf:Vote\"\>", 
+   ",", "\<\"StackExchange.Mathematica:Vote\"\>", 
    ",", "\<\"StackExchange:VoteType\"\>", 
-   ",", "\<\"StackExchange.Codegolf:PostHistory\"\>", 
+   ",", "\<\"StackExchange.Mathematica:PostHistory\"\>", 
    ",", "\<\"StackExchange:PostHistoryType\"\>", 
    ",", "\<\"StackExchange:CloseReason\"\>", 
-   ",", "\<\"StackExchange.Codegolf:Tag\"\>"}], "}"}]], "Output",
- CellLabel->"Out[4]=",ExpressionUUID->"5d6609a5-985b-4525-bb03-f05822b3a069"]
+   ",", "\<\"StackExchange.Mathematica:Tag\"\>"}], "}"}]], "Output",
+ CellLabel->"Out[4]=",ExpressionUUID->"5ca82f63-c930-4774-a0dd-3dc27d5bdf00"]
 }, Open  ]]
 }, Open  ]],
 
@@ -75,7 +75,7 @@ Cell[BoxData[{
    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{"Get", "[", "\"\<MathematicaSEAnalysis`\>\"", "]"}]}], "Input",
- CellLabel->"In[84]:=",ExpressionUUID->"17a924d7-d472-4924-98ae-d607c157b8ea"]
+ CellLabel->"In[5]:=",ExpressionUUID->"17a924d7-d472-4924-98ae-d607c157b8ea"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -155,7 +155,7 @@ Cell[BoxData[{
    RowBox[{"NiceGrid", "[", 
     RowBox[{"#", ",", 
      RowBox[{"Alignment", "\[Rule]", "Top"}]}], "]"}], "&"}]}]}], "Input",
- CellLabel->"In[86]:=",ExpressionUUID->"f4fd715f-988d-470e-8824-3013772cabe4"],
+ CellLabel->"In[7]:=",ExpressionUUID->"f4fd715f-988d-470e-8824-3013772cabe4"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -195,7 +195,479 @@ Cell[BoxData[
     Dividers -> {}, Editable -> Automatic, Frame -> None, FrameStyle -> 
     Automatic, ItemSize -> Automatic, ItemStyle -> None, Selectable -> 
     Automatic, Spacings -> Automatic}]]], "Output",
- CellLabel->"Out[89]=",ExpressionUUID->"680fc08d-639a-4451-8de8-06e98b95d565"]
+ CellLabel->"Out[10]=",ExpressionUUID->"e47506f6-0cd6-4b53-bbf2-ecf739f4c07d"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Gather Metadata", \
+"Section",ExpressionUUID->"71d94bf4-33b8-4049-9eb6-0d5ee3992432"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Set up and prefetch property to extract WL code snippets property\
+\>", "Subsection",ExpressionUUID->"946ed95d-1bc7-43a1-b54d-79360fde4f38"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Disable", " ", "the", " ", "formatting", " ", "to", " ", "better", " ", 
+    "handle", " ", "HTML", " ", "inconsistencies"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"EntityProperty", "[", 
+       RowBox[{
+       "\"\<StackExchange.Mathematica:Post\>\"", ",", "\"\<Body\>\""}], "]"}],
+       "[", "\"\<FormattingFunction\>\"", "]"}], "=", "Identity"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"EntityProperty", "[", 
+       RowBox[{
+       "\"\<StackExchange.Mathematica:Post\>\"", ",", 
+        "\"\<WolframLanguageSnippets\>\""}], "]"}], "[", "\"\<Label\>\"", 
+      "]"}], "=", "\"\<Wolfram Language snippets\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"EntityProperty", "[", 
+       RowBox[{
+       "\"\<StackExchange.Mathematica:Post\>\"", ",", 
+        "\"\<WolframLanguageSnippets\>\""}], "]"}], "[", 
+      "\"\<DefaultFunction\>\"", "]"}], "=", 
+     RowBox[{"EntityFramework`BatchApplied", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"RightComposition", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"EntityProperty", "[", 
+          RowBox[{
+          "\"\<StackExchange.Mathematica:Post\>\"", ",", "\"\<Body\>\""}], 
+          "]"}], ",", "\[IndentingNewLine]", "GetXML", ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Map", "[", "\[IndentingNewLine]", 
+          RowBox[{"RightComposition", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Cases", "[", 
+              RowBox[{"#", ",", 
+               RowBox[{
+                RowBox[{"XMLElement", "[", 
+                 RowBox[{"\"\<code\>\"", ",", 
+                  RowBox[{"{", "}"}], ",", 
+                  RowBox[{"{", "code_String", "}"}]}], "]"}], 
+                "\[RuleDelayed]", "code"}], ",", "Infinity"}], "]"}], "&"}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"Map", "[", "CodeBlockToExpression", "]"}]}], 
+           "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}]}], 
+        "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"BatchSize", "\[Rule]", "5000"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"DateString", "[", "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PrefetchProperty", "[", 
+     RowBox[{"EntityProperty", "[", 
+      RowBox[{
+      "\"\<StackExchange.Mathematica:Post\>\"", ",", " ", 
+       "\"\<WolframLanguageSnippets\>\""}], "]"}], "]"}], "//", 
+    "AbsoluteTiming"}]}]}]], "Input",
+ CellLabel->"In[13]:=",ExpressionUUID->"266f500a-4393-472b-98cb-25c52c4039c3"],
+
+Cell[BoxData["\<\"Fri 25 Oct 2019 10:56:30\"\>"], "Output",
+ CellLabel->"Out[16]=",ExpressionUUID->"d6622464-86f1-4ae2-bc98-27ec43633935"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "\[FormalX]$","shdw",
+   "\"Symbol \\!\\(\\*RowBox[{\\\"\\\\\\\"\[FormalX]$\\\\\\\"\\\"}]\\) \
+appears in multiple contexts \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"System`\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"Global`\\\\\\\
+\"\\\"}], \\\"}\\\"}]\\); definitions in context \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"System`\\\\\\\"\\\"}]\\) may shadow or be \
+shadowed by other definitions.\"",2,17,1,25001289901970696857,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellLabel->
+  "During evaluation of \
+In[13]:=",ExpressionUUID->"64ddbdc7-7356-4111-b19d-bbf22bc6b7eb"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "I$","shdw",
+   "\"Symbol \\!\\(\\*RowBox[{\\\"\\\\\\\"I$\\\\\\\"\\\"}]\\) appears in \
+multiple contexts \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"System`\\\\\
+\\\"\\\", \\\",\\\", \\\"\\\\\\\"Global`\\\\\\\"\\\"}], \\\"}\\\"}]\\); \
+definitions in context \\!\\(\\*RowBox[{\\\"\\\\\\\"System`\\\\\\\"\\\"}]\\) \
+may shadow or be shadowed by other definitions.\"",2,17,2,
+   25001289901970696857,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellLabel->
+  "During evaluation of \
+In[13]:=",ExpressionUUID->"3355e8d1-8944-41a3-9616-dbe4e78add80"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Import", "::", "noelem"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The Import element \
+\\\"\\!\\(\\*RowBox[{\\\"\\\\\\\"XMLObject\\\\\\\"\\\"}]\\)\\\" is not \
+present when importing as \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"SCT\\\\\\\"\\\"}]\\).\"\>"}]], "Message", "MSG",
+ ShowCellLabel->True,
+ CellLabel->
+  "(kernel 5)",ExpressionUUID->"a14846a6-4635-4997-b03a-56cd93d64d44"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "foo$","shdw",
+   "\"Symbol \\!\\(\\*RowBox[{\\\"\\\\\\\"foo$\\\\\\\"\\\"}]\\) appears in \
+multiple contexts \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"PacletManager`\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"Global`\\\\\\\"\\\"}], \\\"}\\\"}]\\); definitions in context \\!\
+\\(\\*RowBox[{\\\"\\\\\\\"PacletManager`\\\\\\\"\\\"}]\\) may shadow or be \
+shadowed by other definitions.\"",2,17,3,25001289901970696857,"Local",
+   "PacletManager`foo$"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellLabel->
+  "During evaluation of \
+In[13]:=",ExpressionUUID->"1a2b9cf6-57fe-4d7e-ba70-028228b93da6"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "testFunction$","shdw",
+   "\"Symbol \\!\\(\\*RowBox[{\\\"\\\\\\\"testFunction$\\\\\\\"\\\"}]\\) \
+appears in multiple contexts \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"System`\\\\\\\"\\\", \\\",\\\", \\\"\\\\\\\"Global`\\\\\\\
+\"\\\"}], \\\"}\\\"}]\\); definitions in context \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"System`\\\\\\\"\\\"}]\\) may shadow or be \
+shadowed by other definitions.\"",2,17,4,25001289901970696857,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellLabel->
+  "During evaluation of \
+In[13]:=",ExpressionUUID->"ff4214dd-7ab2-4420-8217-d2d3c90cfbbb"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "out$","shdw",
+   "\"Symbol \\!\\(\\*RowBox[{\\\"\\\\\\\"out$\\\\\\\"\\\"}]\\) appears in \
+multiple contexts \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"System`\\\\\
+\\\"\\\", \\\",\\\", \\\"\\\\\\\"Global`\\\\\\\"\\\"}], \\\"}\\\"}]\\); \
+definitions in context \\!\\(\\*RowBox[{\\\"\\\\\\\"System`\\\\\\\"\\\"}]\\) \
+may shadow or be shadowed by other definitions.\"",2,17,5,
+   25001289901970696857,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellLabel->
+  "During evaluation of \
+In[13]:=",ExpressionUUID->"da5dcbfd-80d4-43d7-a56b-7e4fd7a4db6c"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "f$","shdw",
+   "\"Symbol \\!\\(\\*RowBox[{\\\"\\\\\\\"f$\\\\\\\"\\\"}]\\) appears in \
+multiple contexts \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"System`\\\\\
+\\\"\\\", \\\",\\\", \\\"\\\\\\\"Global`\\\\\\\"\\\"}], \\\"}\\\"}]\\); \
+definitions in context \\!\\(\\*RowBox[{\\\"\\\\\\\"System`\\\\\\\"\\\"}]\\) \
+may shadow or be shadowed by other definitions.\"",2,17,6,
+   25001289901970696857,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellLabel->
+  "During evaluation of \
+In[13]:=",ExpressionUUID->"80c2b2e7-d721-4c76-9ece-aa1d9afadcaf"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Import", "::", "noelem"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The Import element \
+\\\"\\!\\(\\*RowBox[{\\\"\\\\\\\"XMLObject\\\\\\\"\\\"}]\\)\\\" is not \
+present when importing as \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"SCT\\\\\\\"\\\"}]\\).\"\>"}]], "Message", "MSG",
+ ShowCellLabel->True,
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"8addb90e-4925-43e4-8700-d6ab756cd7e7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"3206.0406339`", ",", 
+   InterpretationBox[
+    RowBox[{
+     TagBox["Success",
+      "SummaryHead"], "[", 
+     DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = 
+      "Ready"}, 
+      TemplateBox[{PaneSelectorBox[{False -> GridBox[{{
+              PaneBox[
+               ButtonBox[
+                DynamicBox[
+                 FEPrivate`FrontEndResource[
+                 "FEBitmaps", "SquarePlusIconMedium"]], 
+                ButtonFunction :> (Typeset`open$$ = True), Appearance -> None,
+                 Evaluator -> Automatic, Method -> "Preemptive"], 
+               Alignment -> {Center, Center}, ImageSize -> 
+               Dynamic[{
+                 Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                  AbsoluteCurrentValue[Magnification]}]], 
+              FrameBox[
+               StyleBox["\"\[Checkmark]\"", 
+                Directive[
+                 RGBColor[
+                 0.3607843137254902, 0.596078431372549, 0.3803921568627451], 
+                 25], StripOnInput -> False], ContentPadding -> False, 
+               FrameStyle -> None, FrameMargins -> {{0, 0}, {0, 0}}, 
+               StripOnInput -> False], 
+              GridBox[{{
+                 RowBox[{
+                   TagBox[
+                    TemplateBox[{"\"Message\"", "\": \""}, "RowDefault"], 
+                    "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                   TagBox["\"Prefetch successful.\"", "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox[
+                    TemplateBox[{"\"Domain\"", "\": \""}, "RowDefault"], 
+                    "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                   TagBox[
+                   "\"StackExchange.Mathematica:Post\"", "SummaryItem"]}]}}, 
+               GridBoxAlignment -> {
+                "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+               False, GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               GridBoxSpacings -> {
+                "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+               BaseStyle -> {
+                ShowStringCharacters -> False, NumberMarks -> False, 
+                 PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+            GridBoxAlignment -> {"Rows" -> {{Top}}}, AutoDelete -> False, 
+            GridBoxItemSize -> {
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+            BaselinePosition -> {1, 1}], True -> GridBox[{{
+              PaneBox[
+               ButtonBox[
+                DynamicBox[
+                 FEPrivate`FrontEndResource[
+                 "FEBitmaps", "SquareMinusIconMedium"]], 
+                ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                None, Evaluator -> Automatic, Method -> "Preemptive"], 
+               Alignment -> {Center, Center}, ImageSize -> 
+               Dynamic[{
+                 Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                  AbsoluteCurrentValue[Magnification]}]], 
+              FrameBox[
+               StyleBox["\"\[Checkmark]\"", 
+                Directive[
+                 RGBColor[
+                 0.3607843137254902, 0.596078431372549, 0.3803921568627451], 
+                 25], StripOnInput -> False], ContentPadding -> False, 
+               FrameStyle -> None, FrameMargins -> {{0, 0}, {0, 0}}, 
+               StripOnInput -> False], 
+              GridBox[{{
+                 RowBox[{
+                   TagBox[
+                    TemplateBox[{"\"Message\"", "\": \""}, "RowDefault"], 
+                    "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                   TagBox["\"Prefetch successful.\"", "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox[
+                    TemplateBox[{"\"Domain\"", "\": \""}, "RowDefault"], 
+                    "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                   TagBox[
+                   "\"StackExchange.Mathematica:Post\"", "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox[
+                    
+                    TemplateBox[{"\"ValuesProcessed\"", "\": \""}, 
+                    "RowDefault"], "SummaryItemAnnotation"], 
+                   "\[InvisibleSpace]", 
+                   TagBox["154412", "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox[
+                    TemplateBox[{"\"ValuesCached\"", "\": \""}, "RowDefault"],
+                     "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                   TagBox["154412", "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox[
+                    TemplateBox[{"\"Tag\"", "\": \""}, "RowDefault"], 
+                    "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                   TagBox["\"PrefetchProperty\"", "SummaryItem"]}]}}, 
+               GridBoxAlignment -> {
+                "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+               False, GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               GridBoxSpacings -> {
+                "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+               BaseStyle -> {
+                ShowStringCharacters -> False, NumberMarks -> False, 
+                 PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+            GridBoxAlignment -> {"Rows" -> {{Top}}}, AutoDelete -> False, 
+            GridBoxItemSize -> {
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+            BaselinePosition -> {1, 1}]}, 
+         Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+       "SummaryPanel"],
+      DynamicModuleValues:>{}], "]"}],
+    Success["PrefetchProperty", 
+     Association[
+     "MessageTemplate" -> "Prefetch successful.", "Domain" -> 
+      "StackExchange.Mathematica:Post", "ValuesProcessed" -> 154412, 
+      "ValuesCached" -> 154412]],
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False]}], "}"}]], "Output",
+ CellLabel->"Out[17]=",ExpressionUUID->"58ddd86c-1cb8-436a-957e-0f964c428150"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Set up property for WL symbols", \
+"Subsection",ExpressionUUID->"4a6fda2d-26ad-450d-b71e-370d7d268732"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"EntityProperty", "[", 
+     RowBox[{
+     "\"\<StackExchange.Mathematica:Post\>\"", ",", 
+      "\"\<WolframLanguageSymbols\>\""}], "]"}], "[", "\"\<Label\>\"", "]"}], 
+   "=", "\"\<Wolfram Language symbols\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"EntityProperty", "[", 
+     RowBox[{
+     "\"\<StackExchange.Mathematica:Post\>\"", ",", 
+      "\"\<WolframLanguageSymbols\>\""}], "]"}], "[", 
+    "\"\<DefaultFunction\>\"", "]"}], "=", 
+   RowBox[{"EntityFramework`BatchApplied", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"RightComposition", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"EntityProperty", "[", 
+        RowBox[{
+        "\"\<StackExchange.Mathematica:Post\>\"", ",", " ", 
+         "\"\<WolframLanguageSnippets\>\""}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Map", "[", "ExtractSymbolsFromExpression", "]"}]}], 
+      "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"BatchSize", "\[Rule]", "5000"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]}], "Input",
+ CellLabel->"In[18]:=",ExpressionUUID->"2728f4a4-383d-4066-9ee6-a142205fe850"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Export EntityStore with gathered metadata", \
+"Section",ExpressionUUID->"80b10a30-081b-44a8-ad7f-69ac6e9cc44e"],
+
+Cell["Export the results for future use in Explore.nb:", \
+"Text",ExpressionUUID->"5069c2ca-625c-4ed9-8f54-4bae1052be9f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"\"\<mathematica.stackexchange.com_WithMetadata_\>\"", "<>", 
+    RowBox[{"StringReplace", "[", 
+     RowBox[{
+      RowBox[{"DateString", "[", "\"\<ISODateTime\>\"", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<:\>\"", "\[Rule]", "\"\<-\>\""}], ",", 
+        RowBox[{"\"\<T\>\"", "\[Rule]", "\"\<_\>\""}]}], "}"}]}], "]"}], 
+    "<>", "\"\<.mx\>\""}], ",", 
+   RowBox[{
+    RowBox[{"Entity", "[", "\"\<StackExchange.Mathematica:Post\>\"", "]"}], 
+    "[", "\"\<EntityStore\>\"", "]"}]}], "]"}]}], "Input",
+ CellLabel->"In[20]:=",ExpressionUUID->"017ab5e5-943b-427b-ab40-408c52c61096"],
+
+Cell[BoxData["\<\"mathematica.stackexchange.com_WithMetadata_2019-10-25_11-49-\
+58.mx\"\>"], "Output",
+ CellLabel->"Out[21]=",ExpressionUUID->"44953682-35b9-4c5b-8a4a-fb8df1fd6694"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Upload to Wolfram Cloud", \
+"Section",ExpressionUUID->"9e157d3c-9946-4248-81ae-c5f3c6ab9c2c"],
+
+Cell[CellGroupData[{
+
+Cell["Compress for easier sharing", "Subsection",
+ CellChangeTimes->{{3.7808405598014154`*^9, 
+  3.780840565785819*^9}},ExpressionUUID->"f4f42ceb-dbc5-46ca-838b-\
+761056e31096"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"CreateArchive", "[", 
+  "\"\<mathematica.stackexchange.com_WithMetadata_2019-10-25_11-49-58.mx\>\"",
+   "]"}]}], "Input",
+ CellLabel->"In[22]:=",ExpressionUUID->"870b5d23-0479-4e7b-a4c9-35cdc302a515"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Upload to Wolfram Cloud", "Subsection",
+ CellChangeTimes->{{3.7808405682911963`*^9, 
+  3.7808405709487543`*^9}},ExpressionUUID->"3f4323fe-077e-4970-ba84-\
+4978d1f085a7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"CopyFile", "[", "\[IndentingNewLine]", 
+  RowBox[{
+  "\"\<mathematica.stackexchange.com_WithMetadata_2019-10-25_11-49-58.mx.zip\>\
+\"", ",", 
+   RowBox[{"CloudObject", "[", 
+    RowBox[{
+    "\"\<StackExchange2EntityStore/mathematica.stackexchange.com_WithMetadata.\
+mx.zip\>\"", ",", 
+     RowBox[{"Permissions", "\[Rule]", "\"\<Public\>\""}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"OverwriteTarget", "\[Rule]", "True"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellLabel->"In[24]:=",ExpressionUUID->"86833423-a258-4945-9101-73353b78f074"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TemplateBox[{
+    "\"https://www.wolframcloud.com/obj/user-6a5e82a9-068b-4620-a269-\
+0974427cc934/StackExchange2EntityStore/mathematica.stackexchange.com_\
+WithMetadata.mx.zip\"",
+     "https://www.wolframcloud.com/obj/user-6a5e82a9-068b-4620-a269-\
+0974427cc934/StackExchange2EntityStore/mathematica.stackexchange.com_\
+WithMetadata.mx.zip"},
+    "HyperlinkURL"], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/obj/user-6a5e82a9-068b-4620-a269-0974427cc934/\
+StackExchange2EntityStore/mathematica.stackexchange.com_WithMetadata.mx.zip"],
+  SelectWithContents->True]], "Output",
+ CellLabel->"Out[25]=",ExpressionUUID->"2308ca67-406b-4912-b785-db32d0f12605"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
