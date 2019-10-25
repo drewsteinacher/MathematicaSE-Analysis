@@ -1,0 +1,209 @@
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Download EntityStore", \
+"Section",ExpressionUUID->"0c8da7a0-d15e-4a0e-ab74-336515bb29fd"],
+
+Cell["\<\
+Visit the following URL in a browser to download the EntityStore as an MX \
+file.\
+\>", "Text",ExpressionUUID->"4b018dba-b277-46da-af96-96ba19fe0699"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TemplateBox[{
+    "\"https://www.wolframcloud.com/objects/andrews/StackExchange2EntityStore/\
+mathematica.stackexchange.com.mx\"",
+     "https://www.wolframcloud.com/objects/andrews/StackExchange2EntityStore/\
+mathematica.stackexchange.com.mx"},
+    "HyperlinkURL"], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/andrews/StackExchange2EntityStore/\
+mathematica.stackexchange.com.mx"],
+  SelectWithContents->
+   True]], "Input",ExpressionUUID->"d25a2030-26d9-4330-8d66-26d4b73ac1b1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Load EntityStore", \
+"Section",ExpressionUUID->"d0eea49f-726b-48d8-b3f4-048c4113189e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"store", "=", 
+   RowBox[{"Import", "[", "\"\<mathematica.stackexchange.com.mx\>\"", "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"EntityUnregister", "/@", 
+   RowBox[{"store", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"EntityRegister", "[", "store", 
+  "]"}]}], "Input",ExpressionUUID->"350019a6-7c9a-4434-ad54-9e2eaa2b05a7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"StackExchange.Codegolf:User\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Badge\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Comment\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Post\"\>", 
+   ",", "\<\"StackExchange:PostType\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Vote\"\>", 
+   ",", "\<\"StackExchange:VoteType\"\>", 
+   ",", "\<\"StackExchange.Codegolf:PostHistory\"\>", 
+   ",", "\<\"StackExchange:PostHistoryType\"\>", 
+   ",", "\<\"StackExchange:CloseReason\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Tag\"\>"}], "}"}]], "Output",
+ CellLabel->"Out[4]=",ExpressionUUID->"5d6609a5-985b-4525-bb03-f05822b3a069"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Load Paclet", \
+"Section",ExpressionUUID->"389cb7d3-cd6e-4680-8d77-bad7213ec622"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"PacletDirectoryAdd", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Get", "[", "\"\<MathematicaSEAnalysis`\>\"", "]"}]}], "Input",
+ CellLabel->"In[84]:=",ExpressionUUID->"17a924d7-d472-4924-98ae-d607c157b8ea"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Run Paclet Tests", \
+"Section",ExpressionUUID->"0e7f7888-ecb4-4174-8943-67f81eaba6cc"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "NiceGrid", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"NiceGrid", "[", 
+     RowBox[{"x_", ",", "opts___"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"Once", "[", 
+      RowBox[{"ResourceFunction", "[", "\"\<NiceGrid\>\"", "]"}], "]"}], "[", 
+     RowBox[{
+      RowBox[{"Replace", "[", 
+       RowBox[{"x", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"{", "}"}], "|", 
+           RowBox[{"<|", "|>"}]}], "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"{", "}"}], "}"}]}], "}"}]}], "]"}], ",", "opts"}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PacletDirectoryAdd", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FileNames", "[", 
+    RowBox[{"\"\<*.wlt\>\"", ",", 
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<Tests\>\""}], 
+       "}"}], "]"}], ",", "Infinity"}], "]"}], "//", 
+   RowBox[{"RightComposition", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"AssociationMap", "[", "TestReport", "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"KeyMap", "[", "FileNameTake", "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Not", "@", 
+        RowBox[{"TrueQ", "[", 
+         RowBox[{"#", "[", "\"\<AllTestsSucceeded\>\"", "]"}], "]"}]}], "&"}],
+       "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "[", "\"\<TestsFailed\>\"", "]"}], "&"}], "/*", "Values",
+        "/*", 
+       RowBox[{"Apply", "[", "Join", "]"}], "/*", "Values", "/*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"NiceGrid", "[", 
+          RowBox[{"KeyTake", "[", 
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", 
+              RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+             "\"\<TestID\>\"", ",", "\"\<Input\>\"", ",", 
+              "\"\<ExpectedOutput\>\"", ",", "\"\<ActualOutput\>\"", ",", 
+              "\"\<ActualMessages\>\""}], "}"}]}], "]"}], "]"}], "&"}], 
+        ")"}]}], "]"}]}], "\[IndentingNewLine]", "]"}]}], "//", 
+  RowBox[{
+   RowBox[{"NiceGrid", "[", 
+    RowBox[{"#", ",", 
+     RowBox[{"Alignment", "\[Rule]", "Top"}]}], "]"}], "&"}]}]}], "Input",
+ CellLabel->"In[86]:=",ExpressionUUID->"f4fd715f-988d-470e-8824-3013772cabe4"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TagBox[GridBox[{
+     {""}
+    },
+    AllowScriptLevelChange->True,
+    AllowedDimensions->Automatic,
+    AutoDelete->False,
+    BaseStyle->{},
+    BaselinePosition->Automatic,
+    DefaultBaseStyle->"Grid",
+    DeleteWithContents->True,
+    Editable->Automatic,
+    FrameStyle->Automatic,
+    GridBoxAlignment->{"Rows" -> {{Top}}},
+    GridBoxBackground->{"Columns" -> {{
+         GrayLevel[1]}}, "Rows" -> {{
+         GrayLevel[1], 
+         RGBColor[0.8500000000000001, 0.8500000000000001, 0.95]}}},
+    GridBoxDividers->{},
+    GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxItemStyle->{"Columns" -> {{None}}, "Rows" -> {{None}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridDefaultElement->"\[Placeholder]",
+    Selectable->Automatic],
+   "Grid"],
+  Grid[{{}}, {Alignment -> Top, Alignment -> {Center, Center}, Background -> {
+      GrayLevel[1], {{
+        GrayLevel[1], 
+        RGBColor[0.8500000000000001, 0.8500000000000001, 0.95]}}}, Frame -> 
+    All, Alignment -> {Center, Baseline}, AllowedDimensions -> Automatic, 
+    AllowScriptLevelChange -> True, AutoDelete -> False, Background -> None, 
+    BaselinePosition -> Automatic, BaseStyle -> {}, DefaultBaseStyle -> 
+    "Grid", DefaultElement -> "\[Placeholder]", DeleteWithContents -> True, 
+    Dividers -> {}, Editable -> Automatic, Frame -> None, FrameStyle -> 
+    Automatic, ItemSize -> Automatic, ItemStyle -> None, Selectable -> 
+    Automatic, Spacings -> Automatic}]]], "Output",
+ CellLabel->"Out[89]=",ExpressionUUID->"680fc08d-639a-4451-8de8-06e98b95d565"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{958, 988},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+TrackCellChangeTimes->False,
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+
