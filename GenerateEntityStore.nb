@@ -1,0 +1,140 @@
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Generate EntityStore", \
+"Section",ExpressionUUID->"5bfe241d-5006-40b9-96ee-b7688783dd76"],
+
+Cell[CellGroupData[{
+
+Cell["Generate EntityStore from Archive.org XML snapshot", \
+"Subsection",ExpressionUUID->"82e7a794-505a-4233-8ab9-5f94c02fe5a0"],
+
+Cell["Code and procedures for this will be released in the future.", \
+"Text",ExpressionUUID->"f66014ca-5b80-4766-b0af-459715e5481a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"store", "=", 
+    RowBox[{
+    "StackExchange2EntityStore", "[", "\"\<mathematica.stackexchange.com\>\"",
+      "]"}]}], ";"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"EntityRegister", "[", "store", "]"}]}], "Input",
+ CellLabel->"In[66]:=",ExpressionUUID->"fb6a53c6-9532-4d5e-b15a-7e05df80de51"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"719.6688564`", ",", "Null"}], "}"}]], "Output",
+ CellLabel->"Out[67]=",ExpressionUUID->"cbe6fa1a-0333-4df1-b3a2-678757b8e3dc"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"StackExchange.Mathematica:User\"\>", 
+   ",", "\<\"StackExchange.Mathematica:Badge\"\>", 
+   ",", "\<\"StackExchange.Mathematica:Comment\"\>", 
+   ",", "\<\"StackExchange.Mathematica:Post\"\>", 
+   ",", "\<\"StackExchange:PostType\"\>", 
+   ",", "\<\"StackExchange.Mathematica:Vote\"\>", 
+   ",", "\<\"StackExchange:VoteType\"\>", 
+   ",", "\<\"StackExchange.Mathematica:PostHistory\"\>", 
+   ",", "\<\"StackExchange:PostHistoryType\"\>", 
+   ",", "\<\"StackExchange:CloseReason\"\>", 
+   ",", "\<\"StackExchange.Mathematica:Tag\"\>"}], "}"}]], "Output",
+ CellLabel->"Out[68]=",ExpressionUUID->"83ba72fa-4040-4ce5-b58f-adc96248b733"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Export for future use", \
+"Subsection",ExpressionUUID->"5ad9b579-5f6f-4eeb-b0f6-b27bd568dcc4"],
+
+Cell["\<\
+It\[CloseCurlyQuote]s much faster to load an MX file than it is to regenerate \
+each time:\
+\>", "Text",ExpressionUUID->"30ec978b-def3-49eb-9716-057a22fdc746"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<mathematica.stackexchange.com.mx\>\"", ",", "store"}], 
+  "]"}]}], "Input",
+ CellLabel->"In[69]:=",ExpressionUUID->"e04f9506-cf3d-4a41-b864-8f0317b69206"],
+
+Cell[BoxData["\<\"mathematica.stackexchange.com.mx\"\>"], "Output",
+ CellLabel->"Out[70]=",ExpressionUUID->"0865e17d-8c24-4d56-b28f-ffc8c4264097"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Copy to Wolfram Cloud", \
+"Subsection",ExpressionUUID->"f881acc2-f8c8-4298-b3c1-9c3ad3691528"],
+
+Cell["Upload to the Wolfram Cloud so others can use it:", \
+"Text",ExpressionUUID->"33d9f40f-fb9f-4c99-b2bd-2602a3717cc6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"CopyFile", "[", "\[IndentingNewLine]", 
+  RowBox[{"\"\<mathematica.stackexchange.com.mx\>\"", ",", 
+   RowBox[{"CloudObject", "[", 
+    RowBox[{
+    "\"\<StackExchange2EntityStore/mathematica.stackexchange.com.mx\>\"", ",", 
+     RowBox[{"Permissions", "\[Rule]", "\"\<Public\>\""}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"OverwriteTarget", "\[Rule]", "True"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellLabel->"In[71]:=",ExpressionUUID->"0e45e682-6844-498f-888f-60936a5d0d73"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TemplateBox[{
+    "\"https://www.wolframcloud.com/obj/user-6a5e82a9-068b-4620-a269-\
+0974427cc934/StackExchange2EntityStore/mathematica.stackexchange.com.mx\"",
+     "https://www.wolframcloud.com/obj/user-6a5e82a9-068b-4620-a269-\
+0974427cc934/StackExchange2EntityStore/mathematica.stackexchange.com.mx"},
+    "HyperlinkURL"], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/obj/user-6a5e82a9-068b-4620-a269-0974427cc934/\
+StackExchange2EntityStore/mathematica.stackexchange.com.mx"],
+  SelectWithContents->True]], "Output",
+ CellLabel->"Out[72]=",ExpressionUUID->"a08fddf6-71c3-4a49-b633-88a25c800e5b"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Download from Wolfram Cloud", \
+"Subsection",ExpressionUUID->"3ce860f7-95ed-42d6-b113-a4507cf26465"],
+
+Cell["Simply visit the URL in a browser to download the file.", \
+"Text",ExpressionUUID->"f7a677a7-9bb2-4659-afe0-059fd0c85717"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{958, 988},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+TrackCellChangeTimes->False,
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+
