@@ -1,6 +1,7 @@
 BeginPackage["MathematicaSEAnalysis`"];
 
 GetXML;
+CodeBlockToExpression;
 
 Begin["`Private`"];
 
@@ -9,6 +10,7 @@ ClearAll["MathematicaSEAnalysis`*"];
 ClearAll["MathematicaSEAnalysis`*`*"];
 
 <<MathematicaSEAnalysis`GetXML`;
+<<MathematicaSEAnalysis`CodeBlockToExpression`;
 
 SetAttributes[Evaluate[Names["MathematicaSEAnalysis`*"]], {ReadProtected, Protected}];
 
